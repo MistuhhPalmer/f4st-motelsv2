@@ -1,4 +1,3 @@
-Yes, here is the translated code:
 
 ```
 local QBCore = exports['qb-core']:GetCoreObject()
