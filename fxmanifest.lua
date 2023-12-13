@@ -13,7 +13,10 @@ server_scripts {
 }
 
 shared_scripts {
-    'config.lua'
+    'config.lua'.
+    '@qb-core/shared/locale.lua',
+    'locales/en.lua',
+    'locales/*.lua'
 }
 
 -- by f4st3r
