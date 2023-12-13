@@ -1,3 +1,6 @@
+Yes, here is the translated code:
+
+```
 local QBCore = exports['qb-core']:GetCoreObject()
 local Rooms = {}
 
@@ -8,7 +11,6 @@ AddEventHandler("f4st-motels:datacheck", function()
     local PlayerCitizenID = xPlayer.PlayerData.citizenid 
     local motel_type_data = nil 
 
-    
     MySQL.scalar('SELECT `motel_type` FROM `players` WHERE `citizenid` = ? LIMIT 1', {
         PlayerCitizenID
     }, function(motel_type)
@@ -28,39 +30,39 @@ AddEventHandler("f4st-motels:buyRoom", function(motel_type)
 
     if motel_type_data == "basic" then 
         if FastMotels.BasicRoomPrice <= PlayerCash then 
-            xPlayer.Functions.RemoveMoney("cash", FastMotels.BasicRoomPrice, "Basit motel odası satın alındı")
+            xPlayer.Functions.RemoveMoney("cash", FastMotels.BasicRoomPrice, "Purchased basic motel room")
             TriggerEvent("f4st-motels:addDatabase", src, "basic") 
-            TriggerClientEvent("QBCore:Notify", src, "Başarıyla basit motel odası satın aldınız!", "success", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You have successfully purchased a basic motel room!", "success", 3000)
         elseif FastMotels.BasicRoomPrice <= PlayerBank then 
-            xPlayer.Functions.RemoveMoney("bank", FastMotels.BasicRoomPrice, "Basit motel odası satın alındı")
+            xPlayer.Functions.RemoveMoney("bank", FastMotels.BasicRoomPrice, "Purchased basic motel room")
             TriggerEvent("f4st-motels:addDatabase", src, "basic") 
-            TriggerClientEvent("QBCore:Notify", src, "Başarıyla basit motel odası satın aldınız!", "success", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You have successfully purchased a basic motel room!", "success", 3000)
         else 
-            TriggerClientEvent("QBCore:Notify", src, "Yeterli paranız bulunmamakta", "error", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You do not have enough money", "error", 3000)
         end
     elseif motel_type_data == "room1" then 
         if FastMotels.Room1Price <= PlayerCash then 
-            xPlayer.Functions.RemoveMoney("cash", FastMotels.Room1Price, "Orta motel odası satın alındı")
+            xPlayer.Functions.RemoveMoney("cash", FastMotels.Room1Price, "Purchased medium motel room")
             TriggerEvent("f4st-motels:addDatabase", src, "room1") 
-            TriggerClientEvent("QBCore:Notify", src, "Başarıyla orta motel odası satın aldınız!", "success", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You have successfully purchased a medium motel room!", "success", 3000)
         elseif FastMotels.Room1Price <= PlayerBank then 
-            xPlayer.Functions.RemoveMoney("bank", FastMotels.Room1Price, "Orta motel odası satın alındı")
+            xPlayer.Functions.RemoveMoney("bank", FastMotels.Room1Price, "Purchased medium motel room")
             TriggerEvent("f4st-motels:addDatabase", src, "room1") 
-            TriggerClientEvent("QBCore:Notify", src, "Başarıyla orta motel odası satın aldınız!", "success", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You have successfully purchased a medium motel room!", "success", 3000)
         else 
-            TriggerClientEvent("QBCore:Notify", src, "Yeterli paranız bulunmamakta", "error", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You do not have enough money", "error", 3000)
         end
     elseif motel_type_data == "room2" then 
         if FastMotels.Room2Price <= PlayerCash then 
-            xPlayer.Functions.RemoveMoney("cash", FastMotels.Room2Price, "Büyük motel odası satın alındı")
+            xPlayer.Functions.RemoveMoney("cash", FastMotels.Room2Price, "Purchased large motel room")
             TriggerEvent("f4st-motels:addDatabase", src, "room2") 
-            TriggerClientEvent("QBCore:Notify", src, "Başarıyla büyük motel odası satın aldınız!", "success", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You have successfully purchased a large motel room!", "success", 3000)
         elseif FastMotels.Room2Price <= PlayerBank then 
-            xPlayer.Functions.RemoveMoney("bank", FastMotels.Room2Price, "Büyük motel odası satın alındı")
-            TriggerClientEvent("QBCore:Notify", src, "Başarıyla büyük motel odası satın aldınız!", "success", 3000)
+            xPlayer.Functions.RemoveMoney("bank", FastMotels.Room2Price, "Purchased large motel room")
+            TriggerClientEvent("QBCore:Notify", src, "You have successfully purchased a large motel room!", "success", 3000)
             TriggerEvent("f4st-motels:addDatabase", src, "room2") 
         else 
-            TriggerClientEvent("QBCore:Notify", src, "Yeterli paranız bulunmamakta", "error", 3000)
+            TriggerClientEvent("QBCore:Notify", src, "You do not have enough money", "error", 3000)
         end
     end
 end)
@@ -88,7 +90,7 @@ AddEventHandler("f4st-motels:server:teleportRoom", function(source, motel_type)
         SetPlayerRoutingBucket(src, Rooms[src])
         TriggerClientEvent("f4st-motels:teleportRoom", src, motel_type_data)
     else
-        TriggerClientEvent("QBCore:Notify", source, "Şu anda müsait oda bulunmamakta!", "error")
+        TriggerClientEvent("QBCore:Notify", source, "There are no available rooms at the moment!", "error")
     end
 end)
 
@@ -118,3 +120,4 @@ AddEventHandler('f4st-hooker:ExitRoom', function(id)
     Rooms[src] = nil
     SetPlayerRoutingBucket(src, 0)
 end)
+```
